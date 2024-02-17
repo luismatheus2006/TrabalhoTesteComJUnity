@@ -5,11 +5,9 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
 
-
 public class Login {
     public static String AUTH_TOKEN = null; // Variável estática para armazenar o token
     public static String USER_ID = null; // Variável estática para armazenar o id do usuário
-
     public static void main(String[] args) {
         Unirest.setTimeouts(0, 0);
         try {
@@ -22,8 +20,6 @@ public class Login {
                 JSONObject jsonResponse = new JSONObject(response.getBody());
                 AUTH_TOKEN = jsonResponse.getString("token"); // Armazena o token na variável estática
                 USER_ID = String.valueOf(jsonResponse.getInt("id")); // Armazena o id na variável estática, convertendo para String
-                System.out.println("Token: " + AUTH_TOKEN);
-                System.out.println("ID: " + USER_ID);
             } else {
                 System.out.println("Falha na autenticação: " + response.getStatusText());
             }
